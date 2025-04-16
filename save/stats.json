@@ -1,0 +1,46 @@
+{
+  "modes": {
+    "arcade": {
+      "playtime": 18.14,
+      "clear": 2,
+      "clearcount": {
+        "kfmz": 2
+      },
+      "ranking": [
+        {
+          "score": 104900,
+          "time": 18.12,
+          "name": "AAA",
+          "chars": [
+            "kfmz"
+          ],
+          "tmode": 0,
+          "ailevel": 5,
+          "win": 1,
+          "lose": 0,
+          "consecutive": 1
+        },
+        {
+          "score": 65000,
+          "time": 0.02,
+          "name": "A",
+          "chars": [
+            "kfmz"
+          ],
+          "tmode": 0,
+          "ailevel": 5,
+          "win": 1,
+          "lose": 0,
+          "consecutive": 1
+        }
+      ]
+    },
+    "freebattle": {
+      "playtime": 486.06
+    },
+    "training": {
+      "playtime": 0
+    }
+  },
+  "playtime": 504.2
+}
