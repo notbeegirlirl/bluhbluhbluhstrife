@@ -1,0 +1,38 @@
+[Info]
+Name         = "Training"
+DisplayName  = "Training"
+VersionDate  =
+MugenVersion =
+Author       = "stupa"
+Pal.Defaults = 1,2,3,4
+
+[Files]
+Cmd     = Training.cmd
+Cns     = Training.cns 
+St      = Training.cns
+St0     = config.txt
+StCommon = common1.cns
+Sprite  = Training.sff
+Anim    = Training.air
+Sound   = Training.snd
+
+[Arcade]
+Intro.Storyboard =
+Ending.Storyboard =
+
+Pal1 = 01.act
+Pal2 = 02.act
+
+[Palette Keymap]
+x  = 1 ;Press button X to select palette 1, etc.
+y  = 2
+z  = 3
+a  = 4
+b  = 5
+c  = 6
+x2 = 7 ;Hold Start and press button X for palette 7, etc.
+;y2 = 5
+;z2 = 6
+a2 = 8
+;b2 = 5
+;c2 = 6
