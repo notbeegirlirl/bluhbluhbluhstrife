@@ -1,0 +1,392 @@
+; Definition of KFM's stage
+; *** denotes values you should change/check for each stage.
+; The term "background" is used to mean both backgrounds and foregrounds.
+
+;--------------------------------------------------------
+[Info]
+ ;Name of the stage.
+name = "Strider Rooftop"
+displayname = "Strider Rooftop" ;Name to display
+versiondate = 10,29,2016    ;Version date of stage (MM,DD,YYYY or X.XX)
+mugenversion = 1.1          ;Version of M.U.G.E.N stage works on (X.XX)
+author = "Walujski"         ;Stage author name
+
+;--------------------------------------------------------
+[Camera]
+ ;Camera starting position: Usually 0 for both
+startx = 0
+starty = 0
+
+ ;Left and right bound of camera
+ ;You may want to fiddle a bit with these values to make sure the
+ ;background doesn't move too far or too little
+ ;***
+boundleft = -2000
+boundright = 1900
+
+ ;High and low bound of camera
+ ;High is a negative number. Make is more negative if you want to
+ ;camera to be able to move higher.
+ ;Low should usually be 0.
+ ;If omitted, defaults to -25 and 0 respectively
+ ;***
+boundhigh = -1001
+boundlow = 0
+
+ ;This is how much the camera will move vertically towards the
+ ;highest player. Valid values are from 0 to 1. A value of 0 will mean
+ ;the camera does not move up at all. A value of 1 will makes the camera
+ ;follow the highest player.
+ ;Typically .2 for normal-sized backgrounds. You may need to pull this
+ ;value up for taller backgrounds.
+verticalfollow = .2
+
+ ;Minimum vertical distance the highest player has to be from the floor,
+ ;before the camera starts to move up to follow him. For extremely
+ ;tall stages, a floor tension of about 20-30 coupled with a
+ ;vertical-follow of .8 allows the camera to follow the action.
+floortension = 0
+
+ ;Horizontal distance player is from edge before camera starts to move
+ ;left or right. Typically 50 or 60.
+tension = 60
+
+ ;Number of pixels beyond the top and bottom of the screen that may
+ ;be drawn.  Overdraw specifies the how much can be seen during an
+ ;EnvShake.  Overdraw pixels will also be used when the screen aspect
+ ;is taller than the stage aspect.
+overdrawhigh = 500
+overdrawlow = 0
+
+ ;Number of pixels into the top and bottom of the screen that may be
+ ;cut from drawing when the screen aspect is shorter than the stage
+ ;aspect.  These parameters suggest a guideline, and the actual
+ ;number of pixels cut depends on the difference in aspect.
+cuthigh = 25
+cutlow = 25
+
+;--------------------------------------------------------
+[PlayerInfo]
+;--- Player 1 ---
+ ;Player 1 starting coordinates.
+ ;p1startx is typically -70 and p2startx is 70.
+ ;p1starty should be 0.
+p1startx = -170          ;Starting x coordinates
+p1starty = 0           ;Starting y coordinates
+p1facing = 1            ;Direction player faces: 1=right, -1=left
+
+;--- Player 2 ---
+p2startx = 170
+p2starty = 0
+p2facing = -1
+
+;--- Common ---
+ ;Don't change these values.
+leftbound  = -1000 ;Left bound (x-movement)
+rightbound =  1000 ;Right bound
+
+;--------------------------------------------------------
+[Bound]
+ ;Distance from left/right edge of screen that player can move to
+ ;Typically 15
+screenleft = 50    ;Dist from left of screen that player can move to
+screenright = 50   ;Right edge
+
+;--------------------------------------------------------
+[StageInfo]
+ ;"Ground" level where players stand at, measured in pixels from the
+ ;top of the screen.
+ ;Adjust this value to move the ground level up/down in the screen.
+ ;***
+zoffset = 250
+
+ ;Leave this at 1. It makes the players face each other
+autoturn = 1
+
+ ;Set the following to 1 to have the background be reset between
+ ;rounds.
+resetBG = 1
+
+ ;Width and height of the local coordinate space of the stage.
+localcoord = 1000, 300
+
+ ;Horizontal and vertical scaling factor for drawing.
+xscale = 1
+yscale = 1
+
+;--------------------------------------------------------
+[Shadow]
+ ;This controls the darkness of the shadow. Valid values range
+ ;from 0 (lightest) to 256 (darkest). Defaults to 128 if omitted.
+intensity = 0
+
+ ;This is the shadow color given in r,g,b. Valid values for each
+ ;range from 0 (lightest) to 255 (darkest).
+ ;Defaults to 0,0,0 if omitted.
+ ;intensity and color's effects add up to give the final shadow
+ ;result.
+color = 0,0,0
+
+ ;This is the scale factor of the shadow. Use a big scale factor
+ ;to make the shadow longer. You can use a NEGATIVE scale factor
+ ;to make the shadow fall INTO the screen.
+ ;Defaults to 0.4 if omitted.
+yscale = 0
+
+ ;This parameter lets you set the range over which the shadow is
+ ;visible. The first value is the high level, and the second is
+ ;the middle level. Both represent y-coordinates of the player.
+ ;A shadow is invisible if the player is above the high level,
+ ;and fully visible if below the middle level. The shadow is
+ ;faded in between the two levels. This gives an effect of the
+ ;shadow fading away as the player gets farther away from the
+ ;ground. If omitted, defaults to no level effects (shadow is
+ ;always fully visible).
+fade.range = -400,-100
+
+;--------------------------------------------------------
+[Reflection]
+ ;Intensity of reflection (from 0 to 256). Set to 0 to have no
+ ;reflection. Defaults to 0.
+intensity = 0
+
+;--------------------------------------------------------
+[Music]
+ ;Put a filename for a MOD, MP3 or MIDI here, or just leave it
+ ;blank if you don't want music. If an invalid filename is
+ ;given, then no music will play. To play CD audio, put
+ ;the track number followed by ".da". Using a track number of
+ ;0 will play a random audio track. For example, to play
+ ;track 3 from a music CD, use:
+ ;  bgmusic = 3.da
+bgmusic = sound/Strider_Rooftop_Stage.mp3
+
+bgmloopstart = 345794
+bgmloopend = 5254272
+
+ ;Adjust the volume. 100 is for 100%.
+bgmvolume = 75
+
+;========================================================
+;--------------------------------------------------------
+; Background definition
+; ***
+;-------------------------------------
+; [BG x]
+; type = ?       "Normal"/"Parallax"  (def: "normal")
+; spriteno = ?, ? Sprite group and number: groupno, imgno  (req'd)
+; start = ?, ?   Starting location (integer)  (def: 0, 0)
+; delta = ?, ?   Change in location per camera unit moved (float)  (def: 1,1)
+; trans = ?      Transparency settings: "none"/"add"/"add1"/"sub"/"addalpha" (def: "none")
+; alpha = ?, ?   (only for trans=addalpha) Source,dest alpha (def: 256,0)
+; mask = ?       Masking (int): 0 - off, 1 - on  (def: 0)
+; velocity = ?, ? Velocity: x, y (float): speed background moves (def: 0, 0)
+; tile = ?, ?    Tiling: xtile, ytile (int): 0 - off, 1 - infinite,
+;                        >1 - tile that number of times  (def: 0, 0) - only for Normal BG
+; tilespacing = ?, ? Tiling: x, y (int) : space between tiles (def: 0, 0)
+;  Parallax-only:
+; xscale = ?, ?    Top xscale, bottom xscale (float)
+; width = ?, ?     Top width, bottom width (int)  (use either this or above, but not both)
+; yscalestart = ?  Starting y-scale (float, in percent)  (def: 100)
+; yscaledelta = ?  Change in y-scale per unit (float, in percent)  (def: 0)
+;-------------------------------------
+
+;-------------------------------------
+; Main background definition
+[BGdef]
+ ;Filename of sprite data
+spr = strider.sff
+
+ ;Set to 1 if you want to clear the screen to magenta before
+ ;drawing layer 0 (the default background). Good for spotting "holes"
+ ;in your background.
+ ;Remember to turn this off when you are done debugging the background,
+ ;because it slows down performance.
+debugbg = 0
+
+ 
+[BG Background]
+type  = anim
+actionno = 1
+layerno = 0
+start = -65, 70
+delta = 0,0
+trans = none
+mask  = 0
+tile  = 0, 0
+
+[Begin Action 1]
+4,0,0,0, 20
+4,1,0,0, 20
+4,2,0,0, 20
+4,3,0,0, 20
+4,2,0,0, 20
+4,1,0,0, 20
+4,0,0,0, 20
+4,1,0,0, 10
+4,2,0,0, 10
+4,3,0,0, 10
+4,2,0,0, 10
+4,1,0,0, 10
+;----------
+
+[BG BuildingFarback]
+type = Normal
+spriteno = 2, 3
+tile = 3, 0
+mask = 1
+delta = 0.1, 0.1
+start = -2, 49
+
+[BG BuildingBackground]
+type  = normal
+spriteno = 2,0
+start = -501, 341
+delta = .25, .25
+mask = 1
+tile = 3,0
+
+
+[BG BuildingForeground]
+type  = normal
+spriteno = 2,1
+start = -500, 250
+delta = .50, .50
+mask = 1
+tile = 3,0
+
+
+
+;----------
+
+[BG Floor]
+type  = normal
+spriteno = 1,0
+start = -564, 251
+delta = 1, 1
+mask = 1
+tile = 2, 0
+
+
+;----------
+;[BG Ceiling]
+;type  = parallax
+;spriteno = 11,0
+;start = 0, 10
+;delta = 1.1115,.75
+;xscale = 1.425,1
+;yscalestart = 100
+;yscaledelta = -1.0
+;
+;;----------
+;[BG Wall]
+;type  = normal
+;spriteno = 1,0
+;start = 0, 11
+;delta = .8, .75
+;mask = 1
+;tile = 1, 0
+;
+;;----------
+;[BG Pillar Bottom]
+;type  = normal
+;spriteno = 15,0
+;start = 0, 180
+;delta = .8, .75
+;mask = 1
+;tile = 1, 0
+;
+;;----------
+;[BG Pillar Top]
+;type  = normal
+;spriteno = 15,1
+;start = 0, 11
+;delta = .8, .75
+;mask = 1
+;tile = 1, 0
+
+[BG FloorEdgeR]
+type = Normal
+spriteno = 1, 1
+mask = 1
+start = 957, 253
+
+[BG FloorEdgeL]
+type = Normal
+spriteno = 1, 2
+mask = 1
+start = -993, 258
+[BG Crow1]
+type = Anim
+actionno = 2
+start = -225, 172
+tilespacing = 1000, 0
+
+[BG Crow2]
+type = Anim
+actionno = 3
+start = -351, 171
+tilespacing = 600, 0
+
+[BG Crow3]
+type = Anim
+actionno = 4
+start = -729, 171
+
+[BG Crow4]
+type = Anim
+actionno = 2
+start = 618, 168
+
+[BG Crow5]
+type = Anim
+actionno = 3
+start = 396, 168
+
+[BG Crow6]
+type = Anim
+actionno = 4
+start = 865, 169
+
+; Crow1
+[Begin Action 2]
+3,0, 0,0, 150
+3,0, 4,0, 4, H
+3,0, 0,0, 200, H
+3,2, 0,4, 4, H
+3,2, 0,0, 60, H
+3,0, -2,0, 4
+; Crow2
+[Begin Action 3]
+3,1, -5,-1, 4, H
+3,1, 0,0, 100, H
+3,2, 4,-1, 4
+3,2, 0,0, 60
+3,3, 0,-4, 4
+3,3, 0,0, 120
+; Crow3
+[Begin Action 4]
+3,3, 0,0, 200, H
+3,3, 3,0, 4
+3,3, 0,0, 130
+3,3, -3,0, 4, H
+3,3, 0,0, 160, H
+3,4, 28,-25, 4
+3,5, 66,-97, 4
+3,4, 108,-156, 4
+3,5, 138,-218, 4
+3,4, 199,-295, 4
+3,5, 304,-408, 4
+-1,0, 0,0, 450
+3,5, 304,-408, 4, H
+3,4, 199,-295, 4, H
+3,5, 138,-218, 4, H
+3,4, 108,-156, 4, H
+3,5, 66,-97, 4, H
+3,4, 28,-25, 4, H
+3,3, -3,4, 4, H
+
+
+
+
+
