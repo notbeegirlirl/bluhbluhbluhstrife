@@ -1,0 +1,267 @@
+[Statedef -2]
+;===============================================================================
+; Other things
+;===============================================================================
+[State -2]
+type = RemapPal
+trigger1 = 1
+source = 1,1
+dest = 1,palno
+ignorehitpause = 1
+;===============================================================================
+; AI
+;===============================================================================
+;-------------------------------------------------------------------------------
+;Common
+[State 0, Run]
+type = ChangeState
+triggerall = statetype != A
+triggerall = stateno != 60
+triggerall = stateno != 65
+triggerall = stateno != 70
+triggerall = ailevel > 0 && roundstate = 2
+triggerall = ctrl
+triggerall = p2bodydist x > 100
+trigger1 = random < (ailevel * 5)/2
+value = 100
+
+[State 0, AirDashFWD]
+type = ChangeState
+triggerall = statetype != A
+triggerall = stateno != 60
+triggerall = stateno != 65
+triggerall = stateno != 70
+triggerall = ailevel > 0 && roundstate = 2
+triggerall = ctrl
+triggerall = p2bodydist x > 100
+trigger1 = random < (ailevel * 2)/2
+value = 105
+[State 0, AirDashBack]
+type = ChangeState
+triggerall = statetype != A
+triggerall = stateno != 60
+triggerall = stateno != 65
+triggerall = stateno != 70
+triggerall = backedgebodydist > 50
+triggerall = ailevel > 0 && roundstate = 2
+triggerall = ctrl
+triggerall = p2bodydist x < 100 && p2movetype = A
+trigger1 = random < (ailevel * 2)/4
+value = 106
+
+[State 0, Guard]
+type = ChangeState
+triggerall = ailevel > 0 && roundstate = 2
+triggerall = ctrl
+triggerall = (p2bodydist x < 50 && p2movetype = A) || (enemy,numproj > 0)
+trigger1 = random < (ailevel * 10)
+value = ifelse(statetype = A,132,130)
+
+[State 0, AI S.LP]
+type = ChangeState
+triggerall = statetype != A
+triggerall = ailevel > 0 && roundstate = 2
+triggerall = ctrl
+triggerall = p2bodydist x < 3
+trigger1 = random < (ailevel * 30)
+value = 200
+[State 0, AI S.MP]
+type = ChangeState
+triggerall = statetype != A
+triggerall = ailevel > 0 && roundstate = 2
+triggerall = ctrl
+triggerall = p2bodydist x < 3
+trigger1 = random < (ailevel * 20)
+value = 210
+[State 0, AI S.HP]
+type = ChangeState
+triggerall = statetype != A
+triggerall = ailevel > 0 && roundstate = 2
+triggerall = ctrl
+triggerall = p2bodydist x < 3
+trigger1 = random < (ailevel * 10)
+value = 220
+
+[State 0, AI S.LK]
+type = ChangeState
+triggerall = statetype != A
+triggerall = ailevel > 0 && roundstate = 2
+triggerall = ctrl
+triggerall = p2bodydist x < 3
+trigger1 = random < (ailevel * 30)
+value = 230
+[State 0, AI S.MK]
+type = ChangeState
+triggerall = statetype != A
+triggerall = ailevel > 0 && roundstate = 2
+triggerall = ctrl
+triggerall = p2bodydist x < 3
+trigger1 = random < (ailevel * 20)
+value = 240
+[State 0, AI S.HK]
+type = ChangeState
+triggerall = statetype != A
+triggerall = ailevel > 0 && roundstate = 2
+triggerall = ctrl
+triggerall = p2bodydist x < 3
+trigger1 = random < (ailevel * 10)
+value = 250
+
+[State 0, AI C.LP]
+type = ChangeState
+triggerall = statetype != A
+triggerall = ailevel > 0 && roundstate = 2
+triggerall = ctrl
+triggerall = p2bodydist x < 3
+trigger1 = random < (ailevel * 6)
+value = 400
+[State 0, AI C.MP]
+type = ChangeState
+triggerall = statetype != A
+triggerall = ailevel > 0 && roundstate = 2
+triggerall = ctrl
+triggerall = p2bodydist x < 3
+trigger1 = random < (ailevel * 4)
+value = 410
+[State 0, AI C.HP]
+type = ChangeState
+triggerall = statetype != A
+triggerall = ailevel > 0 && roundstate = 2
+triggerall = ctrl
+triggerall = p2bodydist x < 3
+trigger1 = random < (ailevel * 2)
+value = 420
+
+[State 0, AI C.ROLL]
+type = ChangeState
+triggerall = statetype != A
+triggerall = ailevel > 0 && roundstate = 2
+triggerall = ctrl
+triggerall = p2bodydist x < 10
+triggerall = enemy,stateno = [200,450]
+trigger1 = random < (ailevel * 5)
+value = 430
+[State 0, AI C.MK]
+type = ChangeState
+triggerall = statetype != A
+triggerall = ailevel > 0 && roundstate = 2
+triggerall = ctrl
+triggerall = p2bodydist x < 3
+trigger1 = random < (ailevel * 4)
+value = 440
+[State 0, AI C.HK]
+type = ChangeState
+triggerall = statetype != A
+triggerall = ailevel > 0 && roundstate = 2
+triggerall = ctrl
+triggerall = p2bodydist x < 3
+trigger1 = random < (ailevel * 2)
+value = 450
+
+[State 0, A.LP]
+type = ChangeState
+triggerall = statetype = A
+triggerall = ailevel > 0 && roundstate = 2
+triggerall = ctrl
+triggerall = p2bodydist x < 10
+trigger1 = random < (ailevel * 30)
+value = 600
+[State 0, A.MP]
+type = ChangeState
+triggerall = statetype = A
+triggerall = ailevel > 0 && roundstate = 2
+triggerall = ctrl
+triggerall = p2bodydist x < 10
+trigger1 = random < (ailevel * 20)
+value = 610
+[State 0, A.HP]
+type = ChangeState
+triggerall = statetype = A
+triggerall = ailevel > 0 && roundstate = 2
+triggerall = ctrl
+triggerall = p2bodydist x < 10
+trigger1 = random < (ailevel * 10)
+value = 620
+
+[State 0, A.LK]
+type = ChangeState
+triggerall = statetype = A
+triggerall = ailevel > 0 && roundstate = 2
+triggerall = ctrl
+triggerall = p2bodydist x < 10
+trigger1 = random < (ailevel * 30)
+value = 630
+[State 0, A.MK]
+type = ChangeState
+triggerall = statetype = A
+triggerall = ailevel > 0 && roundstate = 2
+triggerall = ctrl
+triggerall = p2bodydist x < 10
+trigger1 = random < (ailevel * 20)
+value = 640
+[State 0, A.HK]
+type = ChangeState
+triggerall = statetype = A
+triggerall = ailevel > 0 && roundstate = 2
+triggerall = ctrl
+triggerall = p2bodydist x < 10
+trigger1 = random < (ailevel * 10)
+value = 650
+;-------------------------------------------------------------------------------
+;Specials
+[State 0, AI NameSlashLol.M]
+type = ChangeState
+triggerall = statetype != A
+triggerall = ailevel > 3 && roundstate = 2
+triggerall = ctrl
+triggerall = p2bodydist x  = [85,105]
+trigger1 = random < (ailevel * 5)
+value = 723
+[State 0, AI NameSlashLol.H]
+type = ChangeState
+triggerall = statetype != A
+triggerall = ailevel > 3 && roundstate = 2
+triggerall = ctrl
+triggerall = p2bodydist x  = [125,145]
+trigger1 = random < (ailevel * 5)
+value = 724
+
+; :painShinji:
+[State 0, AI S.Crow]
+type = ChangeState
+triggerall = power >= 1000
+triggerall = statetype != A
+triggerall = ailevel > 3 && roundstate = 2
+triggerall = ctrl
+triggerall = p2bodydist x  = [30,120]
+trigger1 = random < (ailevel * 4)
+value = 769
+[State 0, AI A.Crow]
+type = ChangeState
+triggerall = power >= 1000
+triggerall = statetype = A
+triggerall = ailevel > 3 && roundstate = 2
+triggerall = ctrl
+triggerall = p2bodydist x  = [30,120]
+trigger1 = random < (ailevel * 4)
+value = 768
+
+[State 0, AI S.CrowBlade]
+type = ChangeState
+triggerall = power >= 3000
+triggerall = statetype != A
+triggerall = ailevel > 3 && roundstate = 2
+triggerall = ctrl
+triggerall = p2bodydist x  = [30,50]
+trigger1 = random < (ailevel * 3)
+value = 769
+
+[State 0, AI Smuppets]
+type = ChangeState
+triggerall = power >= 5000
+triggerall = statetype != A
+triggerall = ailevel > 3 && roundstate = 2
+triggerall = ctrl
+triggerall = p2bodydist x  = [10,20]
+trigger1 = random < (ailevel * 4)
+value = 750
